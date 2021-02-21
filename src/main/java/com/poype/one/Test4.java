@@ -24,9 +24,11 @@ interface Speak {
 
 interface Run {
 
-    default void getDescription() {
-        System.out.println("run run run run !!!");
-    }
+    /**
+     * 删除Run方法的默认实现，此时虽然Speak interface中提供了同名方法的默认实现，但Worker类中仍然必须提供精确的方法实现
+     * Speak接口中的方法默认实现无法像super class一样代替这里的方法实现
+     */
+    void getDescription();
 }
 
 // Worker的父类和实现的接口中都提供了相同方法的实现，super class win。interface接口中的默认实现被忽略
