@@ -5,6 +5,8 @@ public class Test4 {
     public static void main(String[] args) {
         Worker worker = new Worker();
         worker.getDescription();
+
+        Run.testStatic();
     }
 }
 
@@ -29,6 +31,10 @@ interface Run {
      * Speak接口中的方法默认实现无法像super class一样代替这里的方法实现
      */
     void getDescription();
+
+    static void testStatic() {
+        System.out.println("接口中支持定义static方法");
+    }
 }
 
 // Worker的父类和实现的接口中都提供了相同方法的实现，super class win。interface接口中的默认实现被忽略
@@ -43,3 +49,4 @@ class Worker implements Speak, Run {
         System.out.println("Worker类自己的getDescription方法");
     }
 }
+
