@@ -19,8 +19,10 @@ public class Test5 {
     }
 
     public static void main(String[] args) {
-        goodWay1();
-        goodWay2();
+//        goodWay1();
+//        goodWay2();
+//        createOptionalWithValue();
+        createEmptyOptional();
     }
 
     private static void badCase() {
@@ -43,5 +45,15 @@ public class Test5 {
         // 如果optional中有值，就返回对应的值，否则返回默认值
         String str = optional.orElse("empty");
         System.out.println(str);
+    }
+
+    private static void createOptionalWithValue() {
+        Optional<Integer> optional = Optional.of(100);
+        optional.ifPresent(System.out::println);
+    }
+
+    private static void createEmptyOptional() {
+        Optional<Integer> optional = Optional.empty();
+        optional.ifPresent(System.out::println);
     }
 }
