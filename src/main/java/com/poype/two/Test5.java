@@ -1,6 +1,8 @@
 package com.poype.two;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Stream;
 
 /**
@@ -10,8 +12,15 @@ import java.util.stream.Stream;
  */
 public class Test5 {
 
-    public static void main(String[] args) {
+    static Set<String> strSet = new HashSet<>();
+    static {
+//        strSet.add("one");
+//        strSet.add("two");
+    }
 
+    public static void main(String[] args) {
+        goodWay1();
+        goodWay2();
     }
 
     private static void badCase() {
@@ -20,5 +29,19 @@ public class Test5 {
         if (optional.isPresent()) {
             optional.get().toString();
         }
+    }
+
+    // 使用Optional的正确方式
+    private static void goodWay1() {
+        Optional<String> optional = strSet.stream().findFirst();
+        // 如果optional中有值，对应的函数才会执行，否则什么都不会发生
+        optional.ifPresent(System.out::println);
+    }
+
+    private static void goodWay2() {
+        Optional<String> optional = strSet.stream().findFirst();
+        // 如果optional中有值，就返回对应的值，否则返回默认值
+        String str = optional.orElse("empty");
+        System.out.println(str);
     }
 }
