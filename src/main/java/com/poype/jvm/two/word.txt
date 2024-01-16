@@ -51,3 +51,5 @@ G1运作期间不会产生内存碎片，但需要的额外资源要比CMS高。
 -XX:+PrintClassHistogramBeforeFullGC
 -XX:+HeapDumpOnOutOfMemoryError
 -XX:HeapDumpPath=/aa/bbb/ccc
+
+图片“堆的结构”，即使是用G1，堆的结构也是如此。即G1也是有年轻代和老年代，年轻代中也是有一个Eden和两个Survivor
