@@ -42,6 +42,8 @@ $ jps -l
 53272 jdk.jcmd/sun.tools.jps.Jps
 54936 com.poype.jvm.three.Test    这行是测试类
 
+$ jinfo 54532
+
 2. jstat: 监视虚拟机各种运行状态信息
 $ jstat -gcutil 54532
   S0     S1     E      O      M     CCS    YGC     YGCT     FGC    FGCT     CGC    CGCT       GCT
@@ -54,6 +56,10 @@ O Old    占比 89.54%
 
 3. jstack: Java堆栈跟踪，用于生成虚拟机当前时刻的线程快照。也就是threaddump。
            线程快照就是当前虚拟机内每一条线程正在执行的方法堆栈的集合
+           top 查看一个进程的CPU和MEM
+           top -Hp  查看进程中的每个线程占用的cpu和mem
+           再根据线程id结合jstack的输出查看
+
 
 4. jmap: 生成堆快照 heapdump，用参数-XX:+HeapDumpOnOutOfMemoryError参数可以在JVM发生OOM时自动生成heapdump。
 
